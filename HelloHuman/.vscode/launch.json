@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HellohumanApplication<hellohuman>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.charlie.hellohuman.HellohumanApplication",
+            "projectName": "hellohuman",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
