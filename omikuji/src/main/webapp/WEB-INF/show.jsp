@@ -29,6 +29,7 @@
                 The next time you see a ${animal}, you will have good luck. Also, 
                 ${message}
             </p>
+            <a href="/">Go Back</a>
         </div>
     </div>
 </body>
