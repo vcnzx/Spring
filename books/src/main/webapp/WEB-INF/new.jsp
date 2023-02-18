@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <h1>New Book Form</h1>
-        <form action="/books" method="post">
+        <!-- <form action="/books" method="post">
             <label for="title" class="form-label">Title</label>
             <input type="text" name="title" id="title" class="form-control">
             <label for="author" class="form-label">Author</label>
@@ -29,7 +29,23 @@
             <label for="pages" class="form-label">Number of pages</label>
             <input type="number" name="pages" id="pages" class="form-control">
             <button type="submit" class="btn btn-primary">Add Book</button>
-        </form>
+        </form> -->
+        <!-- <h1>new and improved form</h1> -->
+        <form:form action="/books" method="POST" modelAttribute="book">
+            <div class="form-control">
+                <form:label path="title">Title: </form:label>
+                <form:input path="title"></form:input>
+            </div>
+            <div class="form-control">
+                <form:label path="author">Author: </form:label>
+                <form:input path="author"></form:input>
+            </div>
+            <div class="form-control">
+                <form:label path="pages">Pages: </form:label>
+                <form:input path="pages"></form:input>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Add Book</button>
+        </form:form>
     </div>
 </body>
 </html>

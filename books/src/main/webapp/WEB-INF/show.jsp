@@ -20,34 +20,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Book Store</h1>
         <div class="card mt-3">
-            <table class="table table-bordered">
-                <thead class="table-warning">
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">Pages</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="book" items="${books}">
-                        <tr>
-                            <td> 
-                                <c:out value="${book.getTitle()}"></c:out>
-                            </td>
-                            <td>
-                                <c:out value="${book.getAuthor()}"></c:out>
-                            </td>
-                            <td>
-                                <c:out value="${book.getPages()}"></c:out>
-                            </td>
-                            <td><a href="/books/${book.id}">View</a></td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+            <h1>${book.title}</h1>
+            <p>Author: ${book.author}</p>
+            <p>Number of pages: ${book.pages}</p>
         </div>
         <a class="btn btn-primary" href="/books/new">Add a book</a>
     </div>
