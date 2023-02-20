@@ -30,8 +30,18 @@ public class BookService { //SERVICE CONTAINS BUSINESS LOGIC
         return optionalBook.orElse(null);
     }
 
+
+    
     //! UPDATE
+    public void updateBook(Book book) {
+        bookRepository.save(book);
+    }
 
+
+        
     //! DELETE
-
+    public void deleteBookById(Book book) {
+        bookRepository.delete(book);
+    }
+    
 }

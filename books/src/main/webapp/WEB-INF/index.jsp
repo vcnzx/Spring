@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Tacos</title>
+    <title>Books</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
@@ -43,7 +43,13 @@
                             <td>
                                 <c:out value="${book.getPages()}"></c:out>
                             </td>
-                            <td><a href="/books/${book.id}">View</a></td>
+                            <td><a href="/books/${book.id}">View</a>
+                            <a href="/books/edit/${book.id}">Edit</a>
+                            <form action="/books/delete/${book.id}" method="POST">
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="submit" value="Delete">
+                            </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

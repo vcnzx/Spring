@@ -1,13 +1,17 @@
 package com.charlie.books.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,15 +37,20 @@ public class BookController {
         // @RequestParam("author") String author,
         // @RequestParam("pages") Integer pages,
         // HttpSession session,
-        @ModelAttribute("book") Book book
+        @Valid @ModelAttribute("book") Book book, BindingResult result
         ){
         // Book newBook = new Book(title, author, pages);
-        bookService.createBook(book);
-        // session.setAttribute("title", title);
-        // session.setAttribute("author", author);
-        // session.setAttribute("pages", pages);
-        return "redirect:/";
-    }
+        if(result.hasErrors()){
+            return "new.jsp";
+        }
+        else {
+            bookService.createBook(book);
+            // session.setAttribute("title", title);
+            // session.setAttribute("author", author);
+            // session.setAttribute("pages", pages);
+            return "redirect:/";
+        }
+        }
     //! Read All
     @RequestMapping("/")
     public String index(Model model){
@@ -59,7 +68,25 @@ public class BookController {
         return "show.jsp";
     }
     //! Update
+    @GetMapping("/books/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model){
+        Book book = bookService.getOneBook(id);
+        model.addAttribute("book", book);
+        return "edit.jsp";
+    }
+
+    @PutMapping("/books/{id}")
+    public String update(@ModelAttribute("book") Book book){
+        bookService.updateBook(book);
+        return "redirect:/";
+    }
 
     //! Delete
+    @DeleteMapping("/books/delete/{id}")
+    public String delete(@PathVariable("id") Long id){
+        Book book = bookService.getOneBook(id);
+        bookService.deleteBookById(book);
+        return "redirect:/";
+    }
 
 }
