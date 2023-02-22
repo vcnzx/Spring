@@ -76,9 +76,15 @@ public class BookController {
     }
 
     @PutMapping("/books/{id}")
-    public String update(@ModelAttribute("book") Book book){
-        bookService.updateBook(book);
-        return "redirect:/";
+    public String update(@Valid @ModelAttribute("book") Book book, BindingResult result){
+        if(result.hasErrors()){
+            return "edit.jsp";
+        }
+        else{
+            bookService.updateBook(book);
+            return "redirect:/";
+        }
+        
     }
 
     //! Delete

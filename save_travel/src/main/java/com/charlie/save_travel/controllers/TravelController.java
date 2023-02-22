@@ -69,9 +69,14 @@ public class TravelController {
     }
 
     @PutMapping("/expenses/{id}")
-    public String update(@ModelAttribute("expenses") Travel expenses){
-        travelService.updateExpense(expenses);
-        return "redirect:/";
+    public String update(@Valid @ModelAttribute("expenses") Travel expenses, BindingResult result){
+        if(result.hasErrors()){
+            return "edit.jsp";
+        }
+        else{
+            travelService.updateExpense(expenses);
+            return "redirect:/";
+        }
     }
 
     //! Delete

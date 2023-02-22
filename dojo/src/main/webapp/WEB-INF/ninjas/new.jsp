@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Expenses</title>
+    <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
@@ -19,16 +19,23 @@
     <script type="text/javascript" src="/js/app.js"></script><!-- change to match your file/naming structure -->
 </head>
 <body>
-    <div class="container">
-        <div class="card mt-3">
-            <h1>Expense Details</h1>
-            <p>Expense Name: ${expense.expense}</p>
-            <p>Expense Description: ${expense.description}</p>
-            <p>Vendor: ${expense.vendor}</p>
-            <p>Amount spent: ${expense.amount}</p>
-        </div>
-        <a class="btn btn-primary" href="/">Go back</a>
-    </div>
-<!-- LOOK UP FMT FOR FORMATTING -->
+    <h1>New Ninja</h1>
+    <form:form action="/ninjas" method="post" modelAttribute="ninja">
+        <form:label path="dojo"></form:label>
+        <form:select path="dojo">
+            <c:forEach var="dojo" items="${dojos}">
+                <form:option value="${dojo.id}">${dojo.name}</form:option>
+            </c:forEach>
+        </form:select>
+        <form:label path="first">First name</form:label>
+        <form:input path="first"></form:input>
+        <form:label path="last">Last name</form:label>
+        <form:input path="last"></form:input>
+        <form:label path="age">Age</form:label>
+        <form:input path="age"></form:input>
+
+        <input type="submit" value="Create a ninja">
+    </form:form>
+
 </body>
 </html>

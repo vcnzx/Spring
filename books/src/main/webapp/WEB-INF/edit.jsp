@@ -26,17 +26,20 @@
             <input type="hidden" name="_method" value="put">
             <div class="form-control">
                 <form:label path="title">Title: </form:label>
+                <form:errors path="title"></form:errors>
                 <form:input path="title"></form:input>
             </div>
             <div class="form-control">
                 <form:label path="author">Author: </form:label>
+                <form:errors path="author"></form:errors>
                 <form:input path="author"></form:input>
             </div>
             <div class="form-control">
                 <form:label path="pages">Pages: </form:label>
+                <form:errors path="pages"></form:errors>
                 <form:input path="pages"></form:input>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Add Book</button>
+            <button type="submit" class="btn btn-primary mt-3">Edit Book</button>
         </form:form>
     </div>
 </body>
