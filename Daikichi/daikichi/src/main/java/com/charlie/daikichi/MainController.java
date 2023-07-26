@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
     @RequestMapping("")
     public String welcome(){
-        return "Welcome!";
+        return "Welcome!!";
     }
 
     @RequestMapping("/today")
