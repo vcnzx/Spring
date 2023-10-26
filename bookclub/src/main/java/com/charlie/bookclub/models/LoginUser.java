@@ -25,7 +25,7 @@ public class LoginUser {
         this.email = email;
     }
 
-    public String getPassword() {
+    public String getPasswords() {
         return this.password;
     }
 
